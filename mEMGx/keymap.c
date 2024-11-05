@@ -208,6 +208,10 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
     return true;
   }
 
+  if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
+    return true;
+  }
+
   switch (tap_hold_keycode) {
   // Exceptionally allow symbol layer LTs + row 0 in same-hand chords.
   case KC_BSPC:
