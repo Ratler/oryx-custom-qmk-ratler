@@ -1,9 +1,5 @@
 
 #ifdef ACHORDION_ENABLE
-#include "features/achordion.h"
-#endif
-
-#ifdef ACHORDION_ENABLE
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
                      uint16_t other_keycode, keyrecord_t *other_record) {
   // Also allow same-hand holds when the other key is in the rows outside the

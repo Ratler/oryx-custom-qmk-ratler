@@ -20,7 +20,7 @@
  * <https://getreuer.info/posts/keyboards/achordion>
  */
 
-//#include "achordion.h"
+#include "achordion.h"
 
 #if !defined(IS_QK_MOD_TAP)
 // Attempt to detect out-of-date QMK installation, which would fail with
