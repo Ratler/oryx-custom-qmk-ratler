@@ -1,3 +1,6 @@
+#ifdef ACHORDION_ENABLE
+#include "features/achordion.h"
+#endif
 
 #ifdef ACHORDION_ENABLE
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
