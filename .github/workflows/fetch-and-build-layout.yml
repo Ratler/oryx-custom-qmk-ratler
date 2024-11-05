@@ -6,7 +6,7 @@ on:
       layout_id:
         description: "Layout id available in URL https://configure.zsa.io/voyager/layouts/[ID_IS_HERE]/latest"
         required: true
-        default: "g7jjw"
+        default: "mEMGx"
       layout_geometry:
         description: "voyager|moonlander|ergodox_ez"
         required: true
@@ -34,9 +34,9 @@ jobs:
           response=$(curl --location 'https://oryx.zsa.io/graphql' --header 'Content-Type: application/json' --data '{"query":"query getLayout($hashId: String!, $revisionId: String!, $geometry: String) {layout(hashId: $hashId, geometry: $geometry, revisionId: $revisionId) {  revision { hashId, qmkVersion }}}","variables":{"hashId":"${{ github.event.inputs.layout_id }}","geometry":"${{ github.event.inputs.layout_geometry }}","revisionId":"latest"}}' | jq '.data.layout.revision | [.hashId, .qmkVersion]')
           hash_id=$(echo "${response}" | jq -r '.[0]')
           firmware_version=$(printf "%.0f" $(echo "${response}" | jq -r '.[1]'))
-          
+
           curl -L "https://oryx.zsa.io/source/${hash_id}" -o source.zip
-          
+
           echo firmware_version=${firmware_version} >> "$GITHUB_OUTPUT"
 
       - name: Unzip the source file
@@ -81,17 +81,17 @@ jobs:
             keyboard_directory="qmk_firmware/keyboards"
             make_prefix=""
           fi
-          
+
           # Copy layout files to the qmk folder
           rm -rf ${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps/${{ github.event.inputs.layout_id }}
           mkdir -p ${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps && cp -r ${{ github.event.inputs.layout_id }} "$_"
-          
+
           # Build the layout
           docker run -v ./qmk_firmware:/root --rm qmk /bin/sh -c "
             qmk setup zsa/qmk_firmware -b firmware${{ steps.download-layout-source.outputs.firmware_version }} -y
             make ${make_prefix}${{ github.event.inputs.layout_geometry }}:${{ github.event.inputs.layout_id }}
           "
-          
+
           # Find and export built layout          
           echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${{ github.event.inputs.layout_geometry }}.*\.\(bin\|hex\)$") >> "$GITHUB_OUTPUT"
 
