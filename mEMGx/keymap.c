@@ -212,18 +212,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
     return true;
   }
 
-  switch (tap_hold_keycode) {
-  // Exceptionally allow symbol layer LTs + row 0 in same-hand chords.
-  case KC_BSPC:
-  case KC_ESCAPE:
-    return true;
-    break;
-    // Exceptionally allow G + J as a same-hand chord.
-    // case NUM_G:
-    //  if (other_keycode == KC_J) { return true; }
-    //  break;
-  }
-
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
