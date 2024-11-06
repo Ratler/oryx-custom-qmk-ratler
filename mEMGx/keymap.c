@@ -157,6 +157,12 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  const uint8_t layer = read_source_layers_cache(record->event.key);
+  if (layer == 1 && record->event.pressed) {
+    clear_weak_mods();
+    send_keyboard_report();
+  }
+
   if (!process_achordion(keycode, record)) { return false; }
 
   switch (keycode) {
