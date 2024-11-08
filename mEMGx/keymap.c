@@ -42,8 +42,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [2] = LAYOUT_voyager(
     RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        KC_CIRC,        KC_DLR,         KC_HASH,        KC_AT,          KC_EXLM,        KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_BSPC,        KC_KP_SLASH,                                    KC_KP_PLUS,     KC_7,           KC_8,           KC_9,           KC_COLN,        KC_E,           
-    KC_TRANSPARENT, MT(MOD_LGUI, KC_MEDIA_STOP),MT(MOD_LALT, KC_MEDIA_PREV_TRACK),MT(MOD_LCTL, KC_MEDIA_NEXT_TRACK),MT(MOD_LSFT, KC_MEDIA_PLAY_PAUSE),KC_KP_ASTERISK,                                 KC_KP_MINUS,    KC_4,           KC_5,           KC_6,           KC_MINUS,       KC_F,           
+    KC_TRANSPARENT, KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_BSPC,        KC_KP_SLASH,                                    KC_KP_MINUS,    KC_7,           KC_8,           KC_9,           KC_COLN,        KC_E,           
+    KC_TRANSPARENT, MT(MOD_LGUI, KC_MEDIA_STOP),MT(MOD_LALT, KC_MEDIA_PREV_TRACK),MT(MOD_LCTL, KC_MEDIA_NEXT_TRACK),MT(MOD_LSFT, KC_MEDIA_PLAY_PAUSE),KC_KP_ASTERISK,                                 KC_KP_PLUS,     KC_4,           KC_5,           KC_6,           KC_MINUS,       KC_F,           
     KC_TRANSPARENT, RGB_HUD,        RGB_HUI,        RGB_SAD,        RGB_SAI,        KC_KP_DOT,                                      KC_KP_EQUAL,    KC_1,           KC_2,           KC_3,           KC_SLASH,       KC_TILD,        
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_ENTER,       KC_0
   ),
