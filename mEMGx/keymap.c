@@ -197,22 +197,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
-                     uint16_t other_keycode, keyrecord_t *other_record) {
-  // Also allow same-hand holds when the other key is in the rows outside the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboards are split.
-  uint8_t row = other_record->event.key.row % (MATRIX_ROWS / 2);
-  if (!(1 <= row && row <= 3)) {
-    return true;
-  }
-
-  if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
-    return true;
-  }
-
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
 void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
     tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
 
@@ -255,7 +239,7 @@ tap_dance_action_t tap_dance_actions[] = {
 char chordal_hold_handedness(keypos_t key) {
 
     if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
-        return "*";
+        return '*';
     }
 
     // On split keyboards, typically, the first half of the rows are on the
