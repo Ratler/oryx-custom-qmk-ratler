@@ -236,13 +236,12 @@ tap_dance_action_t tap_dance_actions[] = {
 
 
 /* custom stuff */
-char chordal_hold_handedness(keypos_t key) {
-
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                      uint16_t other_keycode, keyrecord_t* other_record) {
     if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
-        return '*';
+        return true;
     }
 
-    // On split keyboards, typically, the first half of the rows are on the
-    // left, and the other half are on the right.
-    return key.row < MATRIX_ROWS / 2 ? 'L' : 'R';
+    // Otherwise defer to the opposite hands rule.
+    return get_chordal_hold_default(tap_hold_record, other_record);
 }
