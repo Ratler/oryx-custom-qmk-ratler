@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "features/achordion.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
@@ -163,8 +162,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     send_keyboard_report();
   }
 
-  if (!process_achordion(keycode, record)) { return false; }
-
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
@@ -199,11 +196,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-
-void matrix_scan_user(void) {
-  achordion_task();
-}
-
 
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
                      uint16_t other_keycode, keyrecord_t *other_record) {
@@ -257,3 +249,16 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_1] = ACTION_TAP_DANCE_TAP_HOLD(KC_UNDS, KC_LEFT_CTRL),
         [DANCE_2] = ACTION_TAP_DANCE_TAP_HOLD(KC_DLR, KC_LEFT_SHIFT),
 };
+
+
+/* custom stuff */
+char chordal_hold_handedness(keypos_t key) {
+
+    if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
+        return "*";
+    }
+
+    // On split keyboards, typically, the first half of the rows are on the
+    // left, and the other half are on the right.
+    return key.row < MATRIX_ROWS / 2 ? 'L' : 'R';
+}
