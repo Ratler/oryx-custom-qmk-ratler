@@ -14,9 +14,9 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(13, KC_8)
-#define DUAL_FUNC_1 LT(9, KC_V)
-#define DUAL_FUNC_2 LT(14, KC_S)
+#define DUAL_FUNC_0 LT(12, KC_F4)
+#define DUAL_FUNC_1 LT(13, KC_F4)
+#define DUAL_FUNC_2 LT(14, KC_T)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -28,8 +28,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_EXLM,        KC_LCBR,        KC_QUOTE,       KC_DQUO,        KC_RCBR,        KC_QUES,                                        KC_SCLN,        KC_LBRC,        KC_LPRN,        KC_RPRN,        KC_RBRC,        KC_GRAVE,       
-    KC_HASH,        DUAL_FUNC_0,    MT(MOD_LALT, KC_EQUAL),DUAL_FUNC_1,    DUAL_FUNC_2,    KC_ASTR,                                        KC_PLUS,        MT(MOD_RSFT, KC_BSPC),MT(MOD_RCTL, KC_TAB),MT(MOD_RALT, KC_SPACE),MT(MOD_RGUI, KC_ENTER),KC_AMPR,        
+    KC_EXLM,        KC_LCBR,        KC_QUOTE,       KC_DQUO,        KC_RCBR,        KC_QUES,                                        KC_SCLN,        KC_LBRC,        KC_LPRN,        KC_RPRN,        KC_RBRC,        KC_AMPR,        
+    KC_HASH,        DUAL_FUNC_0,    MT(MOD_LALT, KC_EQUAL),DUAL_FUNC_1,    DUAL_FUNC_2,    KC_ASTR,                                        KC_PLUS,        MT(MOD_RSFT, KC_BSPC),MT(MOD_RCTL, KC_TAB),MT(MOD_RALT, KC_SPACE),MT(MOD_RGUI, KC_ENTER),KC_GRAVE,       
     KC_TILD,        KC_LABK,        KC_PIPE,        KC_MINUS,       KC_RABK,        KC_SLASH,                                       KC_BSLS,        KC_AT,          KC_COMMA,       KC_DOT,         KC_TRANSPARENT, QK_LLCK,        
                                                     KC_PERC,        KC_COLN,                                        KC_TRANSPARENT, KC_TRANSPARENT
   ),
@@ -82,7 +82,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
-  'L', 'L', 'R', 'R'
+  '*', '*', '*', '*'
 );
 
 
